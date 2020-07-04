@@ -1,0 +1,11 @@
+{
+"program":"music data",
+"discription": "data of music in modules array",
+"main":"index.js"
+},
+
+{
+"repository":"github",
+"github":"https://github.com/sebastianquintana/ITC-122"
+}
+    
