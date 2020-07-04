@@ -16,7 +16,7 @@ http.createServer((req,res) =>{
             res.end('Home page \n' + 'arraylenght:'+ playMusic.length);
             break;
 
-        case 'about':
+        case '/about':
             res.writeHead(200,{'content-Type':'text/plain'});
             res.end('About page \n is about me Sebastian Quintana , \n I\'am in the web devolepment program and this is my 5th quarter and so far I gonna said this side of the devolping area is what im enjoying more');
             break;
