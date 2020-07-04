@@ -1,10 +1,15 @@
-const http = require("http");
-console.log("step 1") 
+/* ITC-122 Assingment 1
+node.js with 5 array with 4 attributes
+*/
 
-http.createServer((req,res) => {
-    console.log("step 2")
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Aloha world');
-}).listen(process.env.PORT || 3000);
+const music = [
+    {artist:'Nirvana', album: 'nevermind',year:'1991', genre:'Grunge'},
+    {artist:'the beatles', album: 'hard day night',year:'1967', genre:'classic rock'},
+    {artist:'Notorious B.I.G', album: 'ready to die',year:'1994', genre:'Rap'},
+    {artist:'Stone Temple Pilots', album: 'purple',year:'1994', genre:'Grunge'},
+    {artist:'Elton John', album: 'Goodbye Yellow Brick Road',year:'1973', genre:'classic rock'}
 
-console.log("step 3")
+]
+exports.getAll = () => {
+    return music;
+}
