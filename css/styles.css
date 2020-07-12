@@ -1,0 +1,27 @@
+h1 {
+    margin: 0 auto;
+    text-align: center;
+    }
+
+h2 {
+    margin-left: .5em;
+    }
+
+li {
+    font-size: 2em;
+    width: 300px;
+    margin: .7em;
+    padding: .25em .5em;
+    list-style: none;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: azure;
+    }
+
+
+
+.home {
+    margin: .5em;
+    padding-top: 2em;
+    font-size: 1.5em;
+    }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Music store </title>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css"
+     </head>
+  <body>
+    <h1>Welcome to music store </h1> 
+
+<!-- Adjust h2 details using the passed movie title parameter -->
+    <h2>Details for {{artist}}:</h2>
+
+
+        <ul>
+        {{#with stats}}
+            <li class="">Artist: {{ artist }}
+            <li class="">Album: {{ album }}
+            <li class="">Year Released: {{ year }}
+            <li class="">Genre:{{genre}}   
+        {{/with}}
+        </ul>

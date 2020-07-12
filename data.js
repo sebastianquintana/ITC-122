@@ -13,3 +13,7 @@ const music = [
 exports.getAll = () => {
     return music;
 }
+exports.getDetail = artist => {
+    const music = music.find(music => music.artist === artist);
+    return music;
+}
