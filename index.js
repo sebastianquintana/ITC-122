@@ -10,7 +10,8 @@ const app= express();
 
 
 app.set('port',process.env.PORT || 3000);
-app.use(express.static(__dirname + '/css')); // set location for static files
+app.use(express.static('index'));
+app.use('/css',express.static('css')); // set location for static files
 app.use(bodyParser.urlencoded({extended: true})); // parse form submissions)
 
 let exphbs = require("express-handlebars"); // should be at top of module 
