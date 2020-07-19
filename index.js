@@ -2,19 +2,20 @@
 const express = require("express");
 const bodyParser= require("body-parser");
 const music = require("./data");
-/*var routes = require('./routes.js')(app); // pass ‘app’ instance to the routes module*/
+let routes = require('./routes.js')(app); // pass ‘app’ instance to the routes module*/
 
 
 
 const app= express();
 
 
-app.set('port',process.env.PORT || 3000);
+app.set('port',Router.env.PORT || 3000);
 app.use(express.static('index'));
 app.use('/css',express.static('css')); // set location for static files
 app.use(bodyParser.urlencoded({extended: true})); // parse form submissions)
 
 let exphbs = require("express-handlebars"); // should be at top of module 
+const { Router } = require("express");
 
 app.engine('handlebars', exphbs({defaultLayout: false}));
 app.set("view engine", "handlebars");

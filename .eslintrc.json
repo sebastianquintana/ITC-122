@@ -10,6 +10,6 @@
     },
     "rules": {
         "prefer-arrow-callback":"warn",
-        "no-var":"warn"
+        "no-var": "warn"
     }
 }

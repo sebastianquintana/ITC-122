@@ -17,3 +17,29 @@ exports.getDetail = artist => {
     const music = music.find(music => music.artist === artist);
     return music;
 }
+/*adding music and giving the element to fill the array*/
+exports.addMusic = (artist, album, year, genre) =>{
+    if([artist,album,year,genre].includes(undefined)){
+        return{"added": false,"msg":"information incomplete"};
+    }else{
+            const newMusic = {
+            artist: artist,
+            album: album,
+            year:year,
+            genre: genre
+        }
+        music.push(newMusic);
+        return newMusic;
+        }
+    }
+/* delete artist and giving an msg if it can't find the artist*/
+exports.deleteMusic = artist => {
+    const deleteMusic = music.findIndex(music => music.artist ===artist);
+    if (deleteMusic === -1){
+        return {"delete": false , "msg" : ` "${artist}" we can't find this artist`}
+    }else{
+        music.splice(deleteMusic,1);
+        return{"delete": true , "msg": `"${artist}" is been deleted`}
+    }
+}
+
