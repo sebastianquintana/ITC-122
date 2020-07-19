@@ -13,6 +13,7 @@ const music = [
 exports.getAll = () => {
     return music;
 }
+/* get the data from the music , especific artist*/
 exports.getDetail = artist => {
     const music = music.find(music => music.artist === artist);
     return music;
