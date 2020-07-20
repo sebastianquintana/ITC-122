@@ -1,5 +1,5 @@
 const expect = require("chai").expect;
-const music = require("./data");
+const music = require("../data");
 
 const playMusic = music.getAll();
 /*testing get info about an artist*/

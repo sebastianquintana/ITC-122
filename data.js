@@ -15,8 +15,12 @@ exports.getAll = () => {
 }
 /* get the data from the music , especific artist*/
 exports.getDetail = artist => {
-    const music = music.find(music => music.artist === artist);
-    return music;
+    const musica = music.find(music => music.artist === artist);
+    if (musica === undefined){
+        return{"details":false, "msg": `"${artist}" not found`}
+    }else{
+    return musica;
+}
 }
 /*adding music and giving the element to fill the array*/
 exports.addMusic = (artist, album, year, genre) =>{
