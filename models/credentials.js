@@ -1,0 +1,1 @@
+const connectionString = "mongodb+srv://<adm>:<Oasis11>@<cluster>.mongodb.net/test?retryWrites=true";
