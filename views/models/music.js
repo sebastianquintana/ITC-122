@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // remote db connection settings. For security, connectionString should be in a separate file not committed to git
-const credentials = require('../credentials');
+const credentials = require('../../models/credentials');
 
 
 // local db connection settings 
