@@ -8,7 +8,7 @@ const credentials = require('../../models/credentials');
 // const ip = process.env.ip || '127.0.0.1';
 // const connectionString = 'mongodb://' +ip+ '/<DB_NAME>';
 
-mongoose.connect(connectionString, { dbName: "music", useNewUrlParser: true }); 
+mongoose.connect(credentials, { dbName: "dbuser", useNewUrlParser: true }); 
 
 mongoose.connection.on('open', () => {
   console.log('Mongoose connected.');
