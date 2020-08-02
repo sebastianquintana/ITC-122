@@ -15,28 +15,23 @@ exports.getAll = () => {
 }
 /* get the data from the music , especific artist*/
 exports.getDetail = artist => {
-    const getdetails = recordlabels.find(recordlabels => recordlabels.artist === artist);
-    if (recordlabels === undefined){
-        return{"details":false, "msg": `"${artist}" not found`}
-    }else{
-    return getdetails;
+    console.log(artist);
+    return  recordlabels.find((recordlabel) => {
+        return recordlabel.artist === artist;
+      })
+    
 }
-}
+
 /*adding music and giving the element to fill the array*/
-exports.addMusic = (artist, album, year, genre) =>{
-    if([artist,album,year,genre].includes(undefined)){
-        return{"added": false,"msg":"information incomplete"};
-    }else{
-            const newMusic = {
-            artist: artist,
-            album: album,
-            year:year,
-            genre: genre
-        }
-        recordlabels.push(newMusic);
-        return newMusic;
-        }
+exports.addMusic = (newMusic) =>{
+    if (!newMusic.artist) { return false;}
+    else {
+    // add new music
+    recordlabels.push(newMusic);
+    return true;
     }
+        }
+    
 /* delete artist and giving an msg if it can't find the artist*/
 exports.deleteMusic = artist => {
     const deleteMusic = recordlabels.findIndex(recordlabels => recordlabels.artist ===artist);
