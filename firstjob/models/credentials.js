@@ -1,1 +1,1 @@
-const connectionString = "mongodb+srv://<adm>:<Oasis11>@<cluster>.mongodb.net/test?retryWrites=true";
+const connectionString = "mongodb+srv://<dbuser>:<Oasis11>@<cluster>.mongodb.net/test?retryWrites=true";

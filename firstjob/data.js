@@ -15,11 +15,11 @@ exports.getAll = () => {
 }
 /* get the data from the music , especific artist*/
 exports.getDetail = artist => {
-    const recordlabels = recordlabels.find(recordlabels => recordlabels.artist === artist);
+    const getdetails = recordlabels.find(recordlabels => recordlabels.artist === artist);
     if (recordlabels === undefined){
         return{"details":false, "msg": `"${artist}" not found`}
     }else{
-    return recordlabels;
+    return getdetails;
 }
 }
 /*adding music and giving the element to fill the array*/
@@ -33,7 +33,7 @@ exports.addMusic = (artist, album, year, genre) =>{
             year:year,
             genre: genre
         }
-        music.push(newMusic);
+        recordlabels.push(newMusic);
         return newMusic;
         }
     }

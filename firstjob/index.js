@@ -1,4 +1,3 @@
-'use strict'
 const express = require("express");
 const bodyParser= require("body-parser");
 const music = require("./data");
@@ -26,12 +25,12 @@ let playMusic = music.getAll();
 // send static file as response
 app.get('/', (req, res) => {
     res.type('text/html');
-    res.sendFile('home',{music:playMusic}); 
+    res.render('home',{music:playMusic}); 
    });
    
 app.get('/detail', (req, res) => {
-    const musicartist = req.query.artist
-    res.render('detail', {artist:musicartist, stats: music.getDetail(musicartist)});
+    let result = playmusic.get(req.query.artist);
+    res.render('detail', {artist: req.query.artist, playMusic:result });
 });
 
 app.get('/About', (req, res)=>{

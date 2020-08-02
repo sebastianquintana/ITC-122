@@ -1,4 +1,4 @@
-const music = require('../models/music');
+const music_test = require('../models/music');
 
 // Guitar.find({}, (err, result) => {
 //     if(err) {
@@ -8,8 +8,8 @@ const music = require('../models/music');
 //         return
 //     }
 // });
-music.find({}).lean()
-  .then((music) => {
-    console.log(music);
+music_test.find({}).lean()
+  .then((music_test) => {
+    console.log(music_test);
   })
   .catch(err => next(err))

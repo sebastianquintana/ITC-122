@@ -8,7 +8,7 @@ const credentials = require('../models/credentials');
 // const ip = process.env.ip || '127.0.0.1';
 // const connectionString = 'mongodb://' +ip+ '/<DB_NAME>';
 
-mongoose.connect(credentials.connectionString, { dbName: "music", useNewUrlParser: true }); 
+mongoose.connect(credentials.connectionString, { dbName: "datamusic", useNewUrlParser: true }); 
 
 mongoose.connection.on('open', () => {
   console.log('Mongoose connected.');
@@ -18,9 +18,10 @@ mongoose.connection.on('open', () => {
 // values indicate the data type of each key
 const mySchema = mongoose.Schema({
  brand: { type: String, required: true },
- model: String,
- color: String,
- Year: Number
+ artist: String,
+ album: String,
+ Year: String,
+ genre: String
 }); 
 
 module.exports = mongoose.model('music', mySchema);
