@@ -44,7 +44,7 @@ app.get('/About', (req, res)=>{
     res.status(404);
     res.send('404 - Not found');
    });
-   app.listen(app.get('PORT'),()=>{
+   app.listen(app.get('port'),()=>{
        console.log('express started now')
    });
 
