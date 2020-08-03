@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({extended: true})); // parse form submissions)
 
 
 /*creating a var to get all the data from music*/
-let playMusic = music.getAll();
+const playMusic = music.getAll();
 
 // send static file as response
 app.get('/', (req, res) => {
@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
    });
    
 app.get('/detail', (req, res) => {
-    let result = playmusic.get(req.query.artist);
+    const result = playmusic.get(req.query.artist);
     res.render('detail', {artist: req.query.artist, playMusic:result });
 });
 

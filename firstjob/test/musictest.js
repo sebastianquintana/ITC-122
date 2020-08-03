@@ -5,9 +5,9 @@ const playMusictest = musictest.getAll();
 /*testing get info about an artist*/
 describe("Music Module", () =>{
     it("returns requested Artist", () =>{
-        const result = musictest.getDetail("Nirvana");
+        const result = musictest.getDetail("nirvana");
         console.log(result);
-        expect(result).to.deep.equal({artist: "Nirvana", album: "nevermind", year: "1991", genre : "Grunge"});
+        expect(result).to.deep.equal({artist: "nirvana", album: "nevermind", year: "1991", genre : "grunge"});
     });
 
 it ("fails w/ invalid artist",() =>{
@@ -25,7 +25,7 @@ it("fails w/ fill all the info",() =>{
 });
 /*testing to delete an artist from the data*/
 it("delete artist", ()=>{
-    const result = musictest.deleteMusic("Nirvana");
+    const result = musictest.deleteMusic("nirvana");
     expect(result.delete).to.be.true
 });
 it("fails find the artist", () =>{
