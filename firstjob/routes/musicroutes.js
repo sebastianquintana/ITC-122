@@ -8,10 +8,10 @@ module.exports = router
 router.use('/api', require('cors')());
 
 
-router.get('/', (req, res) => {
+router.get('/', (req, res,next) => {
     return mongoMusic.find({}).lean()
         .then((mongoMusic) => {
-            res.render('home', { music:mongoMusic });
+            res.render('home', { mongoMusic });
         })
         .catch(err => next(err));
 })
@@ -23,38 +23,52 @@ router.get('/api/music', (req, res) => {
     .catch(err => {
         res.status(500).send('Error occurred: dabatase error')})
 })
-   router.get('/detail', (req, res) => {
+router.get('/detail', (req, res) => {
     const result = req.query.artist;
     mongoMusic.findOne({artist:result}).lean()
     .then((mongoMusic) => {
-        res.render('detail',{artist:result, stats:mongoMusic})
+        res.render('detail',{artist:result, stats:mongoMusic});
 
     })
    });
-   router.get('/api/datail',(req,res)=>{
-       const result= req.params.artist;
-       mongoMusic.findOne({artist:result}).lean()
-       .then((mongoMusic) =>{
-           res.render('detail',{artist:result, stats:mongoMusic})
-       })
-   })
-   router.post('/api/newRecord', (req,res) => {
-    if(!req.body) {
-        return res.status(400)
-     }
-     
-     let model = new mongoMusic(req,body)
-     model.save()
-     .then(doc =>{
-         if(!doc || doc.length === 0){
-             return res.status(404)
-         }
-         res.status(201).res(doc)
-     })
-     .catch(err =>{
-         res.status(404).json(err)
-     })
- })
+   router.get('/api/music/', (req, res) => {
+    const result = req.params.artist;
+    mongoMusic.findOne({artist:result})
+    .then((getDetail) => {
+      if (getDetail ===null){
+          return res.status(400).send(`error:"${result}" not found`)
+      }else{
+          res.json(getDetail)
+      }
+    })
+     .catch.status(500).send('error ocurred: database problem',err)
+   });
+   
+   router.post('/api/music', (req, res) => {
+    const result = req.params.title;
+    mongoMusic.findOneAndUpdate({title: result}, req.body, {upsert: true, new: true})
+    .then(getDetail => {
+        res.json(getDetail)
+    })
+    .catch(err => {
+        res.status(500).send('Error occurred: dabatase error', err)
+    })
+})
+    router.get('/delete', (req, res) => {
+    const result = req.query.title;
+    mongoMusic.findOneAndDelete({title: result}, (err, getDetail) => {
+        //console.log(movie);
+        if (err) {
+            console.log(err);
+        } else if (!getDetail) {
+            console.log(result+ " not found");
+            res.send(`${result} not found`);
+        } else if (getDetail) {
+            console.log(result + " delete successful");
+            res.send(`${result} delete successful`);
+        }
+    });
+});
 
 router.get('/About', (req, res)=>{
     res.type('text/plain');
@@ -67,5 +81,3 @@ router.use( (req,res) => {
 router.get(router.get('Port'),()=>{
        console.log('express started now')
    });
-
-

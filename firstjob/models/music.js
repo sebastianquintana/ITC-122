@@ -24,7 +24,7 @@ const mySchema = mongoose.Schema({
  genre: String
 }); 
 
-module.exports = mongoose.model('datamroutes',mySchema, 'music');
+module.exports = mongoose.model('music',mySchema, 'music');
 
 
 
