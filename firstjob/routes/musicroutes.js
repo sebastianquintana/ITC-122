@@ -29,26 +29,27 @@ router.get('/detail', (req, res) => {
     .then((mongoMusic) => {
         res.render('detail',{artist:result, stats:mongoMusic});
 
-    })
+    });
    });
-   router.get('/api/music/', (req, res) => {
+   router.get('/api/music/:artist', (req, res) => {
     const result = req.params.artist;
     mongoMusic.findOne({artist:result})
-    .then((getDetail) => {
-      if (getDetail ===null){
+    .then((mongoMusic) => {
+      if (mongoMusic ===null){
           return res.status(400).send(`error:"${result}" not found`)
       }else{
-          res.json(getDetail)
+          res.json(mongoMusic)
       }
     })
-     .catch.status(500).send('error ocurred: database problem',err)
+     .catch(err => {res.status(500).send('error ocurred: database problem',err)
+})
    });
    
-   router.post('/api/music', (req, res) => {
-    const result = req.params.title;
-    mongoMusic.findOneAndUpdate({title: result}, req.body, {upsert: true, new: true})
-    .then(getDetail => {
-        res.json(getDetail)
+   router.post('/api/music/:artist', (req, res) => {
+    const result = req.params.artist;
+    mongoMusic.findOneAndUpdate({artist: result}, req.body, {upsert: true, new: true})
+    .then(mongoMusic => {
+        res.json(mongoMusic)
     })
     .catch(err => {
         res.status(500).send('Error occurred: dabatase error', err)
@@ -76,7 +77,7 @@ router.get('/About', (req, res)=>{
 });
 router.use( (req,res) => {
     res.type('text/plain'); 
-    res.status(404).res.send('404 - Not found');
+    res.status(404).send('404 - Not found');
    });
 router.get(router.get('Port'),()=>{
        console.log('express started now')

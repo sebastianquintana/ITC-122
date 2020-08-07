@@ -17,10 +17,3 @@ app.use(bodyParser.urlencoded({extended: true})); // parse form submissions)
 app.use('/api', require('cors')());
 
 
-
-app.use( (req,res) => {
-    res.type('text/plain'); 
-    res.status(404).res.send('404 - Not found');
-   });
-
-
