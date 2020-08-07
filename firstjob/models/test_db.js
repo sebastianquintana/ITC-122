@@ -8,17 +8,8 @@ const music_test = require('../models/music');
 //         return
 //     }
 // });
-/*music_test.find({}).lean()
-  .then((music_test) => {
-    console.log(music_test);
+music_test.find({}).lean()
+  .then((result) => {
+    console.log(result);
   })
-  .catch(err => next(err))*/
-
-
-  app.get('/', (req, res, next) => {
-    return music_test.find({}).lean()
-      .then((music_test) => {
-          res.render('home', { music_test });
-      })
-      .catch(err => next(err));
-  });
+  .catch(err => next(err))

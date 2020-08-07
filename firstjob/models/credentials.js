@@ -1,1 +1,1 @@
-const connectionString = "mongodb+srv://dbuser:Oasis11@<Cluster0>.mongodb.net/test?retryWrites=true";
+exports.connectionString = "mongodb+srv://dbuser:Oasis11!@cluster0-dmcoe.mongodb.net/datamusic?retryWrites=true&w=majority";
