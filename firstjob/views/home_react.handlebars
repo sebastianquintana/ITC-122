@@ -21,10 +21,16 @@
 
      const IteamDetail = (props) =>{
        return <div>
-         <h3>Iteam details {props.item.artist}</h3>
-         <li>Album : {props.item.album}</li>
-         <li> Year: {props.item.year}</li>
-         <li> Genre : {props.item.genre}</li>
+         <h3>Iteam details</h3>
+       
+            <form>
+              Artist:<input onChange={props.handleEdit} type = "text" name ="artist" value={props.item.artist || ""} /><br/>
+              Album:<input onChange={props.handleEdit} type = "text" name ="album" value={props.item.album || ""} /><br/>
+              Year:<input onChange={props.handleEdit} type = "text" name ="year" value={props.item.year || ""} /><br/>
+              Genre:<input onChange={props.handleEdit} type = "text" name ="genre" value={props.item.genre || ""} /> <br/>
+            </form>
+            <button onClick={props.handleClear}>Clear</button> 
+            <button onClick={props.handleDelete}>delete</button> 
          </div>
      }
     class App extends React.Component{
@@ -38,16 +44,41 @@
 
           // bind application state to click handler
           this.selectItem = this.selectItem.bind(this);
+          this.handleClear=this.handleClear.bind(this);
+          this.handleEdit=this.handleEdit.bind(this);
+          this.handleDelete=this.handleDelete.bind(this);
        }
+       handleDelete() {
+         console.log('delete me dude')
+         fetch(`/api/delete/${this.state.currentItem._id}`)
+           .then((response) => {
+          return response.json();
+          })
+        .then((result) => {
+         console.log(result) 
+         })
+  .catch(err => console.log(err))
+        
+      }
+      handleEdit(e) {
+        console.log(e.target.name)
+        console.log(e.target.value)
+        let newItem = this.state.currentItem;
+        newItem[e.target.name] = e.target.value;
+        this.setState({currentItem: newItem});
 
+      }
+
+      handleClear (){
+        this.setState({currentItem: {}})
+      }
       // handle list item clicked
       selectItem(event) {
         // event.target is the HTML item clicked
-        console.log(event.target.innerText);
+        
         const found = this.state.items.find((item) =>{
           return item.artist === event.target.innerText
         })
-        console.log(found)
         this.setState({currentItem:found})
       }
      
@@ -59,7 +90,11 @@
           <h2>record labels </h2>
           <ItemList items={this.state.items} handleClick={this.selectItem} />
           <hr />
-          <IteamDetail item={this.state.currentItem}/>
+          <IteamDetail item={this.state.currentItem} 
+          handleClear={this.handleClear}
+          handleEdit={this.handleEdit}
+          handleDelete={this.handleDelete}
+          />
           </div>
           );
       }

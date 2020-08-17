@@ -3,6 +3,8 @@ let router = express.Router()
 let datamusic = require('../data')
 let mongoMusic = require('../models/music')
 const { mongo } = require('mongoose')
+const music = require('../models/music')
+const { MongoClient } = require('mongodb')
 const  getAllMusic = datamusic.getAll()
 module.exports = router
 router.use((err,req,res,next) => {
@@ -66,6 +68,21 @@ router.get('/detail', (req, res) => {
     .catch (err =>next(err))
 });
            
+    router.delete('/api/delete/:artist', (req,res,next) =>{
+        const musicartist = req.params.artist;
+        mongoMusic.deleteOne({artist:musicartist})
+          .then(artist =>{
+              if (artist ===null) {
+                  return res.status(404).send(`Error: "${musicartist}" not found`)
+              }else{
+                  res.json(artist)
+              }
+          })
+            
+    .catch(err => {
+        res.status(500).send('Error occurred: dabatase error', err)
+    })
+        });
     
     router.get('/delete', (req, res) => {
     const result = req.query.title;
