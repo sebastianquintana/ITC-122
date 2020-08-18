@@ -59,6 +59,7 @@ router.get('/detail', (req, res) => {
     .catch(err => {
         res.status(500).send('Error occurred: dabatase error', err)
     })
+    delete req.body["_id"]
 })
    router.get('/new_home', (req,res,next) =>{
     return mongoMusic.find({}).lean()
