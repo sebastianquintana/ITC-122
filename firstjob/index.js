@@ -12,7 +12,7 @@ app.use(newMusicRoute)
 
 app.listen(PORT,() => console.info(`server has started on ${PORT}`));
 app.use(express.static(__dirname + '/public'))
-
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true})); // parse form submissions)
 app.use('/api', require('cors')());
 

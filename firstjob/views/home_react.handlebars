@@ -31,6 +31,7 @@
             </form>
             <button onClick={props.handleClear}>Clear</button> 
             <button onClick={props.handleDelete}>delete</button> 
+             <button onClick={props.handleUpdate}>Update</button> 
          </div>
      }
     class App extends React.Component{
@@ -47,6 +48,7 @@
           this.handleClear=this.handleClear.bind(this);
           this.handleEdit=this.handleEdit.bind(this);
           this.handleDelete=this.handleDelete.bind(this);
+          this.handleUpdate=this.handleUpdate.bind(this);
        }
        handleDelete() {
          console.log('delete me dude')
@@ -57,9 +59,27 @@
         .then((result) => {
          console.log(result) 
          })
-  .catch(err => console.log(err))
+        .catch(err => console.log(err))
+        }
+      
+      
+      handleUpdate(){
+        fetch(`/api/music/${this.state.currentItem._id}`, {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
         
-      }
+      })
+       .then(res => res.json())
+       .then((data) => {
+  // handle successful response
+      })
+    .catch((err) => {
+  // handle error
+    });
+    delete item["_id"]  
+    }
+      
+  
       handleEdit(e) {
         console.log(e.target.name)
         console.log(e.target.value)
@@ -94,6 +114,7 @@
           handleClear={this.handleClear}
           handleEdit={this.handleEdit}
           handleDelete={this.handleDelete}
+          handleUpdate={this.handleUpdate}
           />
           </div>
           );

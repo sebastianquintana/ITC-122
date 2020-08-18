@@ -68,7 +68,7 @@ router.get('/detail', (req, res) => {
     .catch (err =>next(err))
 });
            
-    router.delete('/api/delete/:artist', (req,res,next) =>{
+    router.delete('/api/delete/:artist', (req,res) =>{
         const musicartist = req.params.artist;
         mongoMusic.deleteOne({artist:musicartist})
           .then(artist =>{
@@ -84,7 +84,7 @@ router.get('/detail', (req, res) => {
     })
         });
     
-    router.get('/delete', (req, res) => {
+    router.delete('/delete', (req, res) => {
     const result = req.query.title;
     mongoMusic.findOneAndDelete({title: result}, (err, getDetail) => {
         //console.log(movie);
