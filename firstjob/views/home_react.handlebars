@@ -52,7 +52,10 @@
        }
        handleDelete() {
          console.log('delete me dude')
-         fetch(`/api/delete/${this.state.currentItem._id}`)
+         fetch(`/api/delete/${this.state.currentItem._id}`,{
+           method:"DELETE",
+           headers: { 'Content-Type': 'application/json' },
+         })
            .then((response) => {
           return response.json();
           })
