@@ -1,5 +1,8 @@
 # ITC-122
 
+JavaScript is now widely used for full-stack web development, with Node.js allowing use of the same language for client & server applications. Front-end frameworks like React, Angular, and D3 are enabling new and exciting applications in the browser.
+
+This course will cover modern JavaScript technologies, including server-side scripting, automated testing, single-page web applications with MVC structure, package management, and JSON data storage. By quarter's end, students have built a fully-functional client-server application they can showcase for job applications.
 WEEK1 - Node.js up and running
 First step toward a working web server application. Should have following files and functionality:
 
